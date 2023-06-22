@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const baseUrl = "https://api.binance.com/api/v3";
+const ticker = "BTCUSDT";
 
 async function getBinancePrice(symbol: string) {
   const response = await axios.get(`${baseUrl}/avgPrice?symbol=${symbol}`);
@@ -8,9 +9,8 @@ async function getBinancePrice(symbol: string) {
 }
 
 async function main() {
-  const symbol = "BTCUSDT";
-  const response = await getBinancePrice(symbol);
-  console.log("Price", response.data.price);
+  const response = await getBinancePrice(ticker);
+  console.log("Price:", response.data.price);
 }
 
 main();
